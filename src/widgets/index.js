@@ -4,3 +4,4 @@
 
 import ColumnWidget from './column_widget';
 import ImageWidget from './image_widget';
+import TextWidget from './text_widget';
