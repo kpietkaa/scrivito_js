@@ -3,7 +3,7 @@ import textExtractFromWidgetlist from 'utils/text_extract_from_widgetlist';
 const BaseDepartmentPage = Scrivito.createObjClass({
   name: 'DepartmentPage',
   attributes: {
-    body: ['widgetlist', { only: 'SectionWidget' }],
+    body: ['widgetlist', { only: 'ColumnWidget' }],
     title: 'string',
     navigationSection: 'widgetlist',
     childOrder: 'referencelist',
