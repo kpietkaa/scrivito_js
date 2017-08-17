@@ -5,3 +5,4 @@
 import ColumnWidget from './column_widget';
 import ImageWidget from './image_widget';
 import TextWidget from './text_widget';
+import HeadlineWidget from './headline_widget'
