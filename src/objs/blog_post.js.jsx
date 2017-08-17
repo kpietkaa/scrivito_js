@@ -7,6 +7,7 @@ const BlogPost = Scrivito.createObjClass({
     publishedAt: 'date',
     category: ['enum', { validValues: ['all', 'students', 'other'] }],
     place: 'string',
+    tags: 'stringlist',
   },
 });
 
@@ -19,19 +20,19 @@ class BlogPostComponent extends React.Component {
 
   publishMonth() {
     const date = this.date();
-    if (!date) { return null };
+    if (!date) { return null; }
     const month = date.getMonth() + 1;
     return month;
   }
 
   publishDay() {
     const date = this.date();
-    if (!date) { return null };
+    if (!date) { return null; }
     const day = date.getDate();
     return day;
   }
 
-  render () {
+  render() {
     const obj = this.props.page;
     return (
       <div>
@@ -53,7 +54,7 @@ class BlogPostComponent extends React.Component {
                 tag='h4'
                 content={ obj }
                 attribute='category'
-                style={{display: 'inline'}} >
+                style={ { display: 'inline' } } >
                 {obj.get('category')}
               </Scrivito.React.Content>
             </div>
@@ -63,7 +64,7 @@ class BlogPostComponent extends React.Component {
                 tag='h4'
                 content={ obj }
                 attribute='place'
-                style={{display: 'inline'}} />
+                style={ { display: 'inline' } } />
             </div>
           </div>
         </section>
@@ -79,7 +80,7 @@ class BlogPostComponent extends React.Component {
             tag='div'
             content={ obj }
             attribute='author'
-            style={{display: 'inline'}} />
+            style={ { display: 'inline' } } />
         </div>
       </div>
     );
@@ -103,6 +104,11 @@ Scrivito.provideUiConfig(BlogPost, {
     },
     category: {
       title: 'Category',
+      description: 'Category of blogpost',
+    },
+    tags: {
+      title: 'Tags',
+      description: 'The tags of the blogpost',
     },
   },
 });
