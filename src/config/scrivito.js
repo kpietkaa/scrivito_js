@@ -1,4 +1,5 @@
 Scrivito.configure({
+  homepage: () => Scrivito.Obj.get('e51c4f9f06271e35'),
   routingMethod: 'path',
-  tenant: '7fbf6cd56a94e18ef97c661d5daad2b9',
+  tenant: '06b126e6379fbe35d32a80543bc4a10a',
 });
