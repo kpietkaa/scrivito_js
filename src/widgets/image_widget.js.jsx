@@ -13,7 +13,7 @@ Scrivito.provideUiConfig(ImageWidget, {
   attributes: {
     title: {
       title: 'Title',
-      description: 'Image in widget title'
+      description: 'Image in widget title',
     },
     cssClass: {
       title: 'CSS Class',
@@ -27,7 +27,7 @@ Scrivito.provideComponent(ImageWidget, widget =>
     src={ widget }
     attribute='image'
     className={ widget.get('cssClass') }
-    alt={ widget.get('title') }  />
+    alt={ widget.get('title') } />
 );
 
 export default ImageWidget;
