@@ -3,3 +3,4 @@
 // import ImageWidget from './image_widget';
 
 import ColumnWidget from './column_widget';
+import ImageWidget from './image_widget';
