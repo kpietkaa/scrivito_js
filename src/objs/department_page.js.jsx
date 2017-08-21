@@ -1,6 +1,4 @@
-import textExtractFromWidgetlist from 'utils/text_extract_from_widgetlist';
-
-const BaseDepartmentPage = Scrivito.createObjClass({
+const DepartmentPage = Scrivito.createObjClass({
   name: 'DepartmentPage',
   attributes: {
     body: ['widgetlist', { only: 'ColumnWidget' }],
@@ -9,23 +7,6 @@ const BaseDepartmentPage = Scrivito.createObjClass({
     childOrder: 'referencelist',
   },
 });
-
-class DepartmentPage extends BaseDepartmentPage {
-  navigationOptions() {
-    return {
-      heigthClassName: 'full-height',
-    };
-  }
-
-  textExtract() {
-    return [
-      'navigationSection',
-      'body',
-    ].map(
-      attributeName => textExtractFromWidgetlist(this.get(attributeName))
-    ).join(' ');
-  }
-}
 
 Scrivito.registerClass('DepartmentPage', DepartmentPage);
 
