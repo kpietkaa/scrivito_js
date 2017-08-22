@@ -1,3 +1,6 @@
+import moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
+
 const BlogPost = Scrivito.createObjClass({
   name: 'BlogPost',
   attributes: {
@@ -12,6 +15,37 @@ const BlogPost = Scrivito.createObjClass({
 });
 
 class BlogPostComponent extends React.Component {
+  componentDidMount() {
+    const publishAt = this.props.page.get('publishedAt');
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      startDate: this.startDate(props.page.get('publishedAt')),
+      focused: false,
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  startDate(date) {
+    if(date == null)
+      return null;
+    else
+      return moment(date);
+  }
+
+  handleChange(date) {
+    this.setState({
+      startDate: date,
+    });
+    this.updateDate(this.state.startDate);
+  }
+
+  updateDate(date) {
+    this.props.page.update({ publishedAt: date.toDate() });
+  }
+
   date() {
     const page = this.props.page;
     const data = page.get('publishedAt');
@@ -32,6 +66,13 @@ class BlogPostComponent extends React.Component {
     return day;
   }
 
+  publishYear() {
+    const date = this.date();
+    if (!date) { return null; }
+    const year = date.getFullYear();
+    return year;
+  }
+
   render() {
     const obj = this.props.page;
     return (
@@ -44,9 +85,15 @@ class BlogPostComponent extends React.Component {
               content={ obj }
               attribute='title' />
             <div>
-              Date: <time className='timeline-badge'>
-                { this.publishMonth() }/{ this.publishDay() }
+              Date: <time>
+                { this.publishMonth() }/{ this.publishDay() }/{ this.publishYear() }
               </time>
+              <SingleDatePicker
+                date={ this.state.startDate } // momentPropTypes.momentObj or null
+                onDateChange={ this.handleChange } // PropTypes.func.isRequired
+                focused={ this.state.focused } // PropTypes.bool
+                onFocusChange={ ({ focused }) => this.setState({ focused }) }// PropT.func.req
+              />
             </div>
             <div>
               Category:

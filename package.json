@@ -50,6 +50,9 @@
     "scrivito:commit": "git add vendor/scrivito && git commit -m \"[sdk] Updated Scrivito SDK to version `cd ../rails_connector && git describe`\""
   },
   "dependencies": {
+    "moment": "^2.18.1",
+    "react-addons-shallow-compare": "^15.6.0",
+    "react-dates": "^12.4.0",
     "wu": "^2.1.0"
   }
 }
