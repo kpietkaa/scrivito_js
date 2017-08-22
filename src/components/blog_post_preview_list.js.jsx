@@ -7,7 +7,7 @@ const BlogPostPreviewList = Scrivito.React.connect(({ maxItems, tag }) => {
   let posts;
   // Replace `take`
   if (maxItems) {
-    posts = [...blogPosts.batchSize(maxItems)].slice(0,maxItems);
+    posts = [...blogPosts.batchSize(maxItems)].slice(0, maxItems);
   } else {
     posts = [...blogPosts];
   }
