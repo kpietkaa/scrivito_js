@@ -1,3 +1,5 @@
+import TextSubtract from '../components/text_subtract';
+
 const BlogPostPreviewList = Scrivito.React.connect(({ maxItems, tag }) => {
   let blogPosts = Scrivito.getClass('BlogPost').all().order('title', 'asc');
   if (tag) {
@@ -12,14 +14,14 @@ const BlogPostPreviewList = Scrivito.React.connect(({ maxItems, tag }) => {
   }
 
   const listElements = [];
-  posts.forEach(post => {
+  posts.map(post => {
     listElements.push(
       <li>
         <div style={ { borderBottom: 'solid 1px lightgray' } }>
           <Scrivito.React.Link to={ post }>
             { post.get('title') }
           </Scrivito.React.Link>
-          <p>{ post.get('body').substr(0, 250) + '...' }</p>
+          <TextSubtract body={ post.get('body') } />
         </div>
       </li>
     );

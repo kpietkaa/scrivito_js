@@ -21,7 +21,7 @@ Scrivito.provideUiConfig(BlogOverviewWidget, {
     },
     title: {
       title: 'Title',
-      description: 'Title section title',
+      description: 'Section title',
     },
   },
   description: 'A widget with up to four blog posts',

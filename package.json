@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
     "react-addons-shallow-compare": "^15.6.0",
     "react-dates": "^12.4.0",
     "react-modal": "^2.2.4",
