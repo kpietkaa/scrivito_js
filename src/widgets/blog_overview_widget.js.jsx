@@ -3,21 +3,14 @@ import BlogPostPreviewList from 'components/blog_post_preview_list';
 const BlogOverviewWidget = Scrivito.createWidgetClass({
   name: 'BlogOverviewWidget',
   attributes: {
-    title: 'string',
     maxItems: 'integer',
     tag: 'string',
+    title: 'string',
   },
 });
 
 Scrivito.provideUiConfig(BlogOverviewWidget, {
-  title: 'Blog Overview',
-  titleForContent: widget => widget.get('title'),
-  description: 'A widget with up to four blog posts',
   attributes: {
-    title: {
-      title: 'Title',
-      description: 'Title section title',
-    },
     maxItems: {
       title: 'Max Items',
       description: 'Amount of items to show. Leave it empty, to show all items',
@@ -26,7 +19,14 @@ Scrivito.provideUiConfig(BlogOverviewWidget, {
       title: 'Tag',
       description: 'Filter blog posts by tag. Leave it empty, to not filter by tag',
     },
+    title: {
+      title: 'Title',
+      description: 'Title section title',
+    },
   },
+  description: 'A widget with up to four blog posts',
+  title: 'Blog Overview',
+  titleForContent: widget => widget.get('title'),
 });
 
 Scrivito.provideComponent(BlogOverviewWidget, widget =>

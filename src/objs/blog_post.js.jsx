@@ -15,14 +15,9 @@ const BlogPost = Scrivito.createObjClass({
 });
 
 class BlogPostComponent extends React.Component {
-  componentDidMount() {
-    const publishAt = this.props.page.get('publishedAt');
-  }
-
   constructor(props) {
     super(props);
     this.state = {
-      startDate: this.startDate(props.page.get('publishedAt')),
       focused: false,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -33,17 +28,6 @@ class BlogPostComponent extends React.Component {
       return null;
     else
       return moment(date);
-  }
-
-  handleChange(date) {
-    this.setState({
-      startDate: date,
-    });
-    this.updateDate(this.state.startDate);
-  }
-
-  updateDate(date) {
-    this.props.page.update({ publishedAt: date.toDate() });
   }
 
   date() {
@@ -89,8 +73,8 @@ class BlogPostComponent extends React.Component {
                 { this.publishMonth() }/{ this.publishDay() }/{ this.publishYear() }
               </time>
               <SingleDatePicker
-                date={ this.state.startDate } // momentPropTypes.momentObj or null
-                onDateChange={ this.handleChange } // PropTypes.func.isRequired
+                date={ this.startDate(obj.get('publishedAt')) } // momentPropTypes.momentObj or null
+                onDateChange={ (date) => obj.update({ publishedAt: date.toDate() }) } // PropTypes.func.isRequired
                 focused={ this.state.focused } // PropTypes.bool
                 onFocusChange={ ({ focused }) => this.setState({ focused }) }// PropT.func.req
               />

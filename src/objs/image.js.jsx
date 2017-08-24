@@ -15,7 +15,7 @@ Scrivito.provideUiConfig(Image, {
     },
     tags: {
       title: 'Tags',
-      description: 'Make it easier to find this Image by adding some tags.',
+      description: 'Make it easier to find this Image by adding some tags',
     },
   },
 });
