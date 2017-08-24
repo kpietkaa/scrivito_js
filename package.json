@@ -24,7 +24,6 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "jquery": "^3.2.1",
-    "lorem-ipsum": "^1.0.4",
     "node-sass": "^4.5.3",
     "react": "15.4.0",
     "react-bootstrap": "^0.31.0",
@@ -42,8 +41,7 @@
     "build": "yarn build:clean && yarn build:package",
     "build:clean": "rm -rf build/ && mkdir -p build/",
     "build:package": "NODE_ENV=production webpack",
-    "serve": "NODE_ENV=development webpack-dev-server",
-    "serve:design": "NODE_ENV=development webpack-dev-server --config webpack.design.config.js",
+    "s": "NODE_ENV=development webpack-dev-server",
     "scrivito": "yarn scrivito:build && yarn scrivito:copy && yarn scrivito:commit",
     "scrivito:build": "cd ../rails_connector && bundle && bundle exec rake package:js",
     "scrivito:copy": "rm -rf vendor/scrivito && mkdir -p vendor/scrivito && cp ../rails_connector/pkg/js/scrivito/* vendor/scrivito",
@@ -54,7 +52,6 @@
     "react-addons-shallow-compare": "^15.6.0",
     "react-dates": "^12.4.0",
     "react-modal": "^2.2.4",
-    "react-youtube": "^7.4.0",
-    "wu": "^2.1.0"
+    "react-youtube": "^7.4.0"
   }
 }

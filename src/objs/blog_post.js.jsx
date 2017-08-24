@@ -20,7 +20,6 @@ class BlogPostComponent extends React.Component {
     this.state = {
       focused: false,
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
   startDate(date) {
