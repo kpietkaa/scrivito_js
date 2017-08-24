@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import Time from '../components/time';
 
 const BlogPost = Scrivito.createObjClass({
   name: 'BlogPost',
@@ -35,27 +36,6 @@ class BlogPostComponent extends React.Component {
     return data;
   }
 
-  publishMonth() {
-    const date = this.date();
-    if (!date) { return null; }
-    const month = date.getMonth() + 1;
-    return month;
-  }
-
-  publishDay() {
-    const date = this.date();
-    if (!date) { return null; }
-    const day = date.getDate();
-    return day;
-  }
-
-  publishYear() {
-    const date = this.date();
-    if (!date) { return null; }
-    const year = date.getFullYear();
-    return year;
-  }
-
   render() {
     const obj = this.props.page;
     return (
@@ -68,9 +48,7 @@ class BlogPostComponent extends React.Component {
               content={ obj }
               attribute='title' />
             <div>
-              Date: <time>
-                { this.publishMonth() }/{ this.publishDay() }/{ this.publishYear() }
-              </time>
+              Date: <Time date={ obj.get('publishedAt') } />
               <SingleDatePicker
                 date={ this.startDate(obj.get('publishedAt')) } // momentPropTypes.momentObj or null
                 onDateChange={ (date) => obj.update({ publishedAt: date.toDate() }) } // PropTypes.func.isRequired
