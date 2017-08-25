@@ -5,6 +5,8 @@ const VideoWidget = Scrivito.createWidgetClass({
   name: 'VideoWidget',
   attributes: {
     videoId: 'string',
+    height: 'string',
+    width: 'string',
   },
 });
 
@@ -27,10 +29,20 @@ class VideoWidgetComponent extends React.Component {
     this.setState({ showModal: false });
   }
 
+  videoDimensions() {
+    const widget = this.props.widget;
+    const hash = {};
+    ['height', 'width'].map(fun => {
+      hash[fun] = widget.get(fun);
+    });
+    return hash;
+  }
+
   render() {
+    const videoDimensions = this.videoDimensions();
     const opts = {
-      height: '390',
-      width: '640',
+      height: videoDimensions['height'],
+      width: videoDimensions['width'],
       playerVars: { // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
       },
@@ -42,19 +54,17 @@ class VideoWidgetComponent extends React.Component {
         <ReactModal
           isOpen={ this.state.showModal }
           contentLabel="Inline Styles Modal Example"
-          style={ {
-            overlay: {
-              backgroundColor: 'papayawhip',
-            },
-            content: {
-              color: 'lightsteelblue',
-            },
-          } } >
+          className={ {
+            base: 'myClass',
+          } }
+          overlayClassName={ {
+            base: 'myOverlayClass',
+          } }
+          >
           <YouTube
             videoId={ videoId }
             opts={ opts }
-            onReady={ this._onReady }
-          />
+            onReady={ this._onReady } />
           <button onClick={ this.handleCloseModal }>Close Modal</button>
         </ReactModal>
       </div>
@@ -64,11 +74,19 @@ class VideoWidgetComponent extends React.Component {
 
 Scrivito.provideUiConfig(VideoWidget, {
   title: 'VideoWidget',
-  description: 'A widget with an video',
+  description: 'A widget with the video',
   attributes: {
+    height: {
+      title: 'Video height',
+      description: 'Adjust your video height',
+    },
+    width: {
+      title: 'Video width',
+      description: 'Adjust your video width',
+    },
     videoId: {
-      title: 'Title',
-      description: 'Video in widget title',
+      title: 'VideoId',
+      description: 'ID video from YouTube',
     },
   },
 });
