@@ -1,22 +1,22 @@
 {
   "plugins": [
     "import",
-    "react",
+    "react"
   ],
   "settings": {
-    "import/resolver": "webpack",
+    "import/resolver": "webpack"
   },
   "parserOptions": {
     "ecmaVersion": 8,
-    "sourceType": "module",
+    "sourceType": "module"
   },
   "extends": [
     "eslint:recommended",
     "airbnb/base",
-    "plugin:react/recommended",
+    "plugin:react/recommended"
   ],
   "env": {
-    "jquery": true,
+    "jquery": true
   },
   "globals": {
     "Blob": true,
@@ -25,9 +25,9 @@
     "React": true,
     "ReactDOM": true,
     "Scrivito": true,
-    "window": true,
+    "window": true
   },
-  rules: {
+  "rules": {
     "arrow-body-style": 0,
     "arrow-parens": ["error", "as-needed"],
     "comma-dangle": ["error", {
@@ -35,7 +35,7 @@
       "objects": "always-multiline",
       "imports": "always-multiline",
       "exports": "always-multiline",
-      "functions": "ignore",
+      "functions": "ignore"
     }],
     "consistent-return": 0,
     "curly": ["error", "all"],
@@ -60,6 +60,6 @@
     "react/no-is-mounted": 0,
     "react/prop-types": 0,
     "vars-on-top": 0,
-    "wrap-iife": ["error", "any"],
+    "wrap-iife": ["error", "any"]
   }
 }
