@@ -14,9 +14,9 @@ const BlogPostPreviewList = Scrivito.React.connect(({ maxItems, tag }) => {
   }
 
   const listElements = [];
-  posts.map(post => {
+  posts.map((post, index) => {
     listElements.push(
-      <li>
+      <li key={ index }>
         <div style={ { borderBottom: 'solid 1px lightgray' } }>
           <Scrivito.React.Link to={ post }>
             { post.get('title') }
